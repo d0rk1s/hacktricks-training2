@@ -20,9 +20,12 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::928756043542:role/t_rodman  # Cambiado el ARN del rol
+          role-to-assume: arn:aws:iam::277978271553:role/sts-lab-2-target  # Cambiado el ARN del rol
           role-session-name: OIDCSession
  
       - run: aws sts get-caller-identity
+        shell: bash
+
+      - run: aws secretsmanager get-secret-value --secret-id flag_sts_lab_2
         shell: bash
     
